@@ -1,0 +1,49 @@
+<!--pages/cardJudge/cardJudge.wxml-->
+<view class='wholePage' style="{{pageFixed === true?'position:fixed':''}}">
+  <view class="cardList">
+    <block wx:for="{{items}}" wx:key="item">
+      <view class="showPart" index="{{index}}">
+        <view bindtap='cardshortTap' bindlongpress='cardlongTap' data-index='{{index}}' class="cardList-info">
+          <image mode='aspectFit' class="cardList-photo" src="{{item.imageUrl}}" />
+          <block wx:if="{{item.name}}">
+            <text class="cardList-desc">{{item.name}}</text>
+          </block>
+        </view>
+        <view class="img-stars" catchtap="catchImg" id='{{index}}'>
+          <block wx:for="{{item.stars - 0}}" wx:key='un'>
+            <image bindtap='starChange' data-act='star_choosed' data-selectnum="{{index+1}}" src='{{starChoosed}}'>
+            </image>
+          </block>
+          <block wx:for="{{5- item.stars - 0}}" wx:key="index">
+            <image bindtap='starChange' data-act='star_not' data-selectnum="{{index+1}}" src='{{star}}'>
+            </image>
+          </block>
+        </view>
+
+      </view>
+    </block>
+  </view>
+
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{maskModal}}"></view>
+  <view class="identifyModal" wx:if="{{markModal}}">
+    <view class="maskImage">
+      <image mode='aspectFit' bindtap='refreshPic' src="{{markImg}}"></image>
+    </view>
+    <view class='markTitle'>
+      <text>对{{markText}}的评价？</text>
+    </view>
+    <view class="markContent">
+      <view class="markArea">
+        <textarea show-confirm-bar auto-height placeholder="请填写对此卡的评论" maxlength="200" />
+        </view>
+    </view>
+    <view   class="content-bottom">
+      <button style="width:35vw" class='cancelBtn' bindtap="onCancel" data-status="cancel">取消</button>
+      <button  style="width:35vw" class='confirm' bindtap="onConfirm" data-status="confirm">保存</button>
+    </view>
+  </view>
+</view>
+<!-- <view class='hello'>
+    何sensei倾情奉献
+  </view> -->
+  <button type='warn' bindtap='setCloudData' class="testbtn">提交</button>

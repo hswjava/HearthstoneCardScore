@@ -1,0 +1,19 @@
+<view class='wholePage'>
+  <view class='heroChoosePage'>
+    <view class="heroText" wx:for="{{heroClass}}" wx:key="content" data-index='{{index}}' data-hero='{{item.enname}}' bindtap='typeClick'>
+      <button class="showContent">
+        <view class='showText'>
+          <!-- <text style="color:{{item.textShow[0]['textcolor']}}">{{item.textShow[0]['text1']}}</text> -->
+          <text>{{item.name}}</text>
+        </view>
+      </button>
+    </view>
+    <view class="confirmText">
+      <button style='background-color:yellow' class="showContent">
+        <view class='showText'>
+          <text>确定提交</text>
+        </view>
+      </button>
+    </view>
+  </view>
+</view>

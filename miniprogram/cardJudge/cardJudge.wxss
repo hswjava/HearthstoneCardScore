@@ -1,0 +1,189 @@
+/* pages/cardJudge/cardJudge.wxss */
+.wholePage{
+  width:100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hello{
+  text-align: center;
+}
+
+.cardList{
+  margin-top: 20rpx;
+}
+
+.showPart{
+  float: left;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+/* .cardList-info{
+  float: left;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+} */
+
+.cardList-photo{
+  width: 350rpx;
+  height: 250rpx;
+}
+
+.cardList-desc{
+  display: block;
+  background-color: #000;
+  color: #fff;
+  left: 0;
+  width: 94%;
+  text-align: center;
+  font-size: 25rpx;
+  padding: 10rpx;
+  opacity: 0.5;
+}
+
+.img-stars{
+  text-align: center;
+}
+
+.img-stars image{
+  width:50rpx;
+  height: 50rpx;
+}
+
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  display:flex;
+  align-content: center;
+}
+
+.main-content{
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 60rpx;
+  padding-top: 30rpx;
+}
+
+.identifyModal {
+  top:8%;
+  width: 77.3%;
+  height: 65vh;
+  position: absolute;
+  z-index: 9001;
+  background: #ffffff;
+  left:11.5%;
+  display: flex;
+  flex-direction:column;
+}
+
+.content-bottom{
+  display: flex;
+  width: 100%;
+  height: 60rpx;
+  text-align: center;
+  letter-spacing: 4rpx;
+  position: absolute;
+  bottom: 0;
+  justify-content: space-between;
+}
+
+.identifyTitle {
+  padding-top: 3vh;
+  font-size: 36rpx;
+  color: #030303;
+  height: 5.2vh;
+  display: flex;
+  justify-content: center;
+}
+
+.markContent {
+  padding-top: 3vh; 
+  padding-right:2.7vw;
+  padding-left:2.7vw;
+  padding-bottom:3.6vh;
+}
+
+.markArea {
+  display: flex;
+  background: #fff;
+  border:0.5rpx solid #000000;
+  height:15vh;
+  max-height: 15vh;
+}
+
+.markTitle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalInputStyle {
+  width: 100%;
+  height:7.3vh;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #000000;
+  text-align: center;
+}
+
+.input-holder {
+  font-size: 28rpx;
+  text-align: center;
+
+}
+
+.modal-footer {
+  background: #ffffff;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top: 1rpx solid #eee;
+  height: 6.1vh;
+}
+
+.btn-cancel {
+  width: 50%;
+  height: 100%;
+  align-items:center;
+  justify-content: center;
+  display: flex;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0.24rpx;
+  border-right: 0.5rpx solid #DDDDDD;
+}
+
+.cancelBtn{
+  background-color:lightblue;
+  color: #000000;
+}
+
+.btn-confirm {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0.24rpx;
+  text-align: center;
+}
