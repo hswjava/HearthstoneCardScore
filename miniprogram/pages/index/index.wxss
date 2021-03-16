@@ -1,0 +1,30 @@
+page{
+  position: fixed;
+  /* background-size:100% 100%; */
+  height:100%;
+}
+
+.startPage{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* background-image: url('http://tmp/OdXVkLs81CRM674451fe9f29fd8b9a2303fb653957ff.jpg'); */
+  background-size:100% 100%;
+  height:100%;
+}
+
+.historyJudge{
+  padding-top:100rpx;
+}
+
+.startJudge{
+  padding-top:100rpx;
+}
+
+.header{
+  display:flex;
+  align-items: center;
+  padding-bottom:30rpx;
+  justify-content: center;
+}

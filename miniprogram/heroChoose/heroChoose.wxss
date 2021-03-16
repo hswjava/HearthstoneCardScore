@@ -1,0 +1,40 @@
+.wholePage{
+  height: 100%;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroChoosePage{
+  align-items: center;
+}
+
+.heroText{
+  margin-top:40rpx;
+  display:flex;
+}
+
+.confirmText{
+  margin:40rpx 0;
+  display:flex;
+}
+
+.showContent{
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #000000;
+}
+
+.showText{
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmMark{
+  display:flex;
+}

@@ -1,0 +1,11 @@
+<view class='startPage' style=" background-image: url({{backImg}})">
+  <view class="header">
+    <image src='{{titleSrc}}'></image>
+  </view> 
+  <view class='startJudge'>
+    <button class="JumpBtn" type='primary' bindtap="JumpClick">开始评分</button>
+  </view>
+  <!-- <view class="historyJudge">
+    <button class='historyBtn' type='primary' bindtap="historyClick">历史评分查看</button>
+  </view> -->
+</view>
