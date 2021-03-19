@@ -3,6 +3,7 @@
     "pages/index/index",
     "heroChoose/heroChoose",
     "cardJudge/cardJudge"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

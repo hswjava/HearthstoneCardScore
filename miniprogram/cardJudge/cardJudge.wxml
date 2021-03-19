@@ -1,5 +1,8 @@
 <!--pages/cardJudge/cardJudge.wxml-->
 <view class='wholePage' style="{{pageFixed === true?'position:fixed':''}}">
+  <view class='heroTitle'>
+    {{showTitle}}
+  </view>
   <view class="cardList">
     <block wx:for="{{items}}" wx:key="item">
       <view class="showPart" index="{{index}}">
@@ -34,7 +37,7 @@
     </view>
     <view class="markContent">
       <view class="markArea">
-        <textarea show-confirm-bar auto-height placeholder="请填写对此卡的评论" maxlength="200" />
+        <textarea style="height:15vh" show-confirm-bar bindblur="bindTextAreaBlur" placeholder="请填写对此卡的评论" maxlength="200" value="{{contentShow}}"/>
         </view>
     </view>
     <view   class="content-bottom">
@@ -46,4 +49,4 @@
 <!-- <view class='hello'>
     何sensei倾情奉献
   </view> -->
-  <button type='warn' bindtap='setCloudData' class="testbtn">提交</button>
+  <button type='warn' wx:if="{{!markModal}}" bindtap='setCloudData' class="testbtn">提交</button>
