@@ -189,3 +189,6 @@
   letter-spacing: 0.24rpx;
   text-align: center;
 }
+.scollPart{
+  display: flex;
+}

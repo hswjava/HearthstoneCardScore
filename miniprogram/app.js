@@ -19,6 +19,7 @@ App({
       openId:'',
       userExist:false,
       userInfo:null,
+      firstLogin:false
     }
   }
 })

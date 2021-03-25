@@ -29,8 +29,25 @@
 
   <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{maskModal}}"></view>
   <view class="identifyModal" wx:if="{{markModal}}">
-    <view class="maskImage">
+    <!-- <view class="maskImage">
       <image mode='aspectFit' bindtap='refreshPic' src="{{markImg}}"></image>
+    </view> -->
+    <view class="maskImage">
+      <block wx:if="{{cardifScroll==='0'}}">
+        <image mode='aspectFit' bindtap='refreshPic' src="{{markImg}}"></image>
+      </block>
+      <block wx:if="{{cardifScroll==='1'}}">
+        <scroll-view scroll-x="true">
+          <view class="scollPart">
+            <block wx:for="{{scrollItems}}" wx:key='item'>
+              <view class="scollPart2" wx:for='{{item.childItem}}' wx:for-item='childItem' wx:key='imageUrl'>
+                <image mode='aspectFit' src="{{childItem.imageUrl}}"></image>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </block>
+
     </view>
     <view class='markTitle'>
       <text>对{{markText}}的评价？</text>

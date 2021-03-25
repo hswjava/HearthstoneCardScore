@@ -25,7 +25,7 @@
   text-align:center;
   justify-content: center;
   border-radius: 8px;
-  background:#807b7b;
+  /* background:#807b7b; */
   border: 1px solid #000000;
 }
 

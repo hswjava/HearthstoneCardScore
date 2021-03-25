@@ -22,7 +22,9 @@ Page({
     'star': '',
     'items': [{}],
     'hero': '',
-    'showTitle': ''
+    'showTitle': '',
+    'scrollItems':'',
+    'cardifScroll':'0'
   },
 
   catchImg: function (e) {
@@ -31,7 +33,7 @@ Page({
     let that = this;
     let selectIndex = e.currentTarget.id;
     let { changeAct, changeNum, items } = that.data
-    console.log(changeAct, changeNum, selectIndex)
+    // console.log(changeAct, changeNum, selectIndex)
     let starNum = Number(items[selectIndex]['stars'])
     if (changeAct === 'star_choosed') {
       if (items[selectIndex]['stars'] === Number(changeNum)) {
@@ -51,11 +53,10 @@ Page({
   },
 
   cardshortTap: function (e) {
-    console.log('这是用来放大图片')
     let { items, markIndex } = this.data
     var selectIndex = e.currentTarget.dataset.index;
 
-    console.log(items)
+    // console.log(items)
     wx.previewImage({
       urls: [items[selectIndex]['imageUrl']],
     })
@@ -63,20 +64,31 @@ Page({
 
   cardlongTap: function (e) {
     let that = this;
-    let { items } = that.data
-    console.log(e)
-    console.log('长按出评论框')
-    console.log(e.currentTarget.dataset)
+    let { items,scrollItems } = that.data
+    // console.log(e)
+    // console.log('长按出评论框')
+    // console.log(e.currentTarget.dataset)
     var selectIndex = e.currentTarget.dataset.index;
     if (items[selectIndex]['comment']) {
       that.setData({ contentShow: items[selectIndex]['comment'] })
-      console.log('非空')
+      // console.log('非空')
     }
     else {
       that.setData({ contentShow: '' })
-      console.log('空')
+      // console.log('空')
     }
-    that.setData({ markImg: items[selectIndex]['imageUrl'], markText: items[selectIndex]['name'], markIndex: selectIndex })
+    // console.log(items,typeof items[selectIndex]['childItem'])
+    if (typeof items[selectIndex]['childItem']==='object') {
+      scrollItems=[items[selectIndex]]
+      that.setData({scrollItems:scrollItems})
+      that.setData({markText: items[selectIndex]['name'], markIndex: selectIndex,cardifScroll:'1' })
+      // console.log(scrollItems,that.data.items)
+    }
+    else {
+      // console.log('else')
+
+      that.setData({ markImg: items[selectIndex]['imageUrl'], markText: items[selectIndex]['name'], markIndex: selectIndex,cardifScroll:'0' })
+    }
     that.setData({ pageFixed: true, maskModal: true, markModal: true })
   },
 
@@ -87,20 +99,20 @@ Page({
   },
 
   onCancel: function (e) {
-    console.log('取消评论')
+    // console.log('取消评论')
     this.setData({ pageFixed: false, maskModal: false, markModal: false })
     //调用数据库评论
 
   },
 
   onConfirm: function (e) {
-    console.log('保存评论')
+    // console.log('保存评论')
     let that = this;
     let { hero, markIndex, uploadMark, items } = this.data;
     // console.log(items[markIndex])
     items[markIndex]['comment'] = uploadMark
     that.setData({ items })
-    console.log(hero, markIndex)
+    // console.log(hero, markIndex)
     // db.collection('userScore').where({
     //   openId: app.globalData.openId,
     // }).get({
@@ -115,7 +127,7 @@ Page({
         [hero[markIndex].comment]: uploadMark
       },
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         wx.showToast({
           title: "评论成功",
           icon: 'none',
@@ -144,7 +156,6 @@ Page({
 
   setCloudData: function (e) {
     let { hero, items } = this.data;
-    console.log(app.globalData.openId)
     // console.log(hero,items)
     db.collection('userScore').where({
       openId: app.globalData.openId,
@@ -153,7 +164,6 @@ Page({
         [hero]: items
       },
       success: function (res) {
-        console.log(res)
         wx.showToast({
           title: hero + '提交成功',
           icon: 'none',
@@ -164,7 +174,7 @@ Page({
           wx.navigateBack({
             delta: 1,
           })
-        }, 2000)
+        }, 1500)
 
       }
     })
@@ -174,7 +184,6 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    console.log(options)
     let cloudUrl = app.globalData.cloudUrl
     let url = cloudUrl + 'stars/star_choosed.png'
     cloudImage.cardRequest(url, starChoosedFun)
@@ -195,15 +204,13 @@ Page({
       openId: app.globalData.openId,
     }).get({
       success: res => {
-        console.log(options.hero, res.data[0], typeof res.data[0][options.hero])
+        // console.log(options.hero, res.data[0], typeof res.data[0][options.hero])
         if (typeof res.data[0][options.hero] !== 'undefined') {
-          console.log('1')
           that.setData({ items: res.data[0][options.hero] })
         }
         else {
           db.collection("cardlist").get({
             success: res2 => {
-              console.log('2',res2.data[0])
               // let index = options.selectIndex;
               let hero = options.hero;
               let cardList = []
@@ -211,20 +218,39 @@ Page({
               for (let i = 0; i < cardDir.length; i++) {
                 cardList.push({})
                 wx.cloud.downloadFile({
-                  fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i] + '.png',
+                  fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i]['name'] + '.png',
                   success: res3 => {
                     cardList[i].id = i;
-                    cardList[i].name = cardDir[i];
+                    cardList[i].name = cardDir[i]['name'];
                     cardList[i].imageUrl = res3.tempFilePath;
                     cardList[i].stars = '0';
                     cardList[i].comment = '';
+                    cardList[i].childItem=[]
+                    cardList[i].childItem.push({'imageUrl':res3.tempFilePath})
+                    if(typeof cardDir[i].childCard ==='object'){
+                      // for(let j=0;j<cardDir[i].childCard.length;j++)
+                      for(let j=cardDir[i].childCard.length-1;j>=0;j--){
+                        wx.cloud.downloadFile({
+                          fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i].childCard[j] + '.png',
+                          success:res4=>{
+                            // cardList[i].childItem[j]={'imageUrl':res4.tempFilePath} 
+                            // cardList[i].childItem=[{}]
+                            // cardList[i].childItem[0]={'imageUrl':res3.tempFilePath}
+                            // cardList[i].childItem[j]={'imageUrl':res4.tempFilePath}
+                            cardList[i].childItem.push({'imageUrl':res4.tempFilePath})
+                            // that.setData({ items: cardList })
+                            // cardList[i].childItem.push({'imageUrl':res4.tempFilePath})
+                          },
+                          fail:console.error
+                        })
+                      }
+                    }
                     that.setData({ items: cardList })
-
                   },
                   fail: console.error
                 })
               }
-              console.log(cardList)
+              // console.log(cardList)
               // this.setData({items:res.data[index][hero]})
             },
             fail: console.error

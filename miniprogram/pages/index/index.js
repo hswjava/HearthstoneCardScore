@@ -18,6 +18,7 @@ Page({
       success:function(res){
         console.log('获取成功: ',res)
         app.globalData.userInfo = res.userInfo
+        app.globalData.firstLogin= true
         that.setData({hasUserInfo:true})
         that.JumpClick()
       },
@@ -33,7 +34,6 @@ Page({
   },
   JumpClick: function (e) {
     this.getOpenid()
-    console.log( app.globalData.userInfo.nickName)
     // wx.navigateTo({
     //   url: '../../heroChoose/heroChoose',
     //   // url: '../cooperation/cooperation?text=' + this.data.chooseData+'$' ,

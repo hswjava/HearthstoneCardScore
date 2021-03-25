@@ -22,28 +22,28 @@ function heroText(hero) {
       heroText = '猎人';
       break;
     case 'mage':
-      statuheroTextsText = '法师';
+      heroText = '法师';
       break;
     case 'paladin':
-      statuheroTextsText = '圣骑士';
+      heroText = '圣骑士';
       break;
     case 'priest':
-      statuheroTextsText = '牧师';
+      heroText = '牧师';
       break;
     case 'rogue':
-      statuheroTextsText = '盗贼';
+      heroText = '盗贼';
       break;
     case 'shaman':
-      statuheroTextsText = '萨满';
+      heroText = '萨满';
       break;
     case 'warlock':
-      statuheroTextsText = '术士';
+      heroText = '术士';
       break;
     case 'warrior':
-      statuheroTextsText = '战士';
+      heroText = '战士';
       break;
     case 'neutral':
-      statuheroTextsText = '中立';
+      heroText = '中立';
       break;
     default:
       return null;

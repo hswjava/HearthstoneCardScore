@@ -4,16 +4,18 @@
       <button class="showContent">
         <view class='showText'>
           <!-- <text style="color:{{item.textShow[0]['textcolor']}}">{{item.textShow[0]['text1']}}</text> -->
-          <text style="color:{{item.color}}">{{item.name}}</text>
+          <!-- <text style="color:{{item.color}}">{{item.name}}</text> -->
+          <text>{{item.name}}</text>
         </view>
       </button>
     </view>
-    <!-- <view class="confirmText">
-      <button style='background-color:yellow' class="showContent">
+    <view class="confirmText">
+      <!-- <button style='background-color:yellow' class="showContent"> -->
+        <button bindtap='finishUpload' class="showContent">
         <view class='showText'>
-          <text>确定提交</text>
+          <text>评分完成</text>
         </view>
       </button>
-    </view> -->
+    </view>
   </view>
 </view>
