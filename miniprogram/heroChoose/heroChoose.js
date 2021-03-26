@@ -7,7 +7,7 @@ Page({
 
   /**
    * 页面的初始数据
-   */
+   */ 
   data: {
     heroClass: [],
   },
@@ -41,11 +41,13 @@ Page({
         if (defaultList.length === 0) {
           wx.showModal({
             title: '完成评分',
-            content: '本次评分不用做商业用途，仅作交流，请放心提交。',
+            content: '感谢你对贫瘠之地的锤炼版本的评分，本次评分不用做商业用途，仅作交流，请放心提交。',
             showCancel: false,
             success(res) {
               if (res.confirm) {
-                console.log('退出小程序')
+                wx.redirectTo({
+                  url: '../pages/index/index',
+                  });
               }
             }
           })
