@@ -1,0 +1,40 @@
+/* miniprogram/editionChoose/editionChoose.wxss */
+.wholePage{
+  height: 100%;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150rpx;
+}
+
+.editionChoosePage{
+  align-items: center;
+}
+
+.editionText{
+  margin-top:40rpx;
+  display:flex;
+}
+
+
+
+.showContent{
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  border-radius: 8px;
+  /* background:#807b7b; */
+  border: 1px solid #000000;
+}
+
+.showText{
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmMark{
+  display:flex;
+}

@@ -1,0 +1,13 @@
+<!--miniprogram/editionChoose/editionChoose.wxml-->
+<view class='wholePage'>
+  <view class='editionChoosePage'>
+    <view class="editionText" wx:for="{{editionClass}}" wx:key="content" data-index='{{index}}' data-selectID='{{item.id}}' bindtap='typeClick'>
+      <button class="showContent">
+        <view class='showText'>
+          <text>{{item.name}}</text>
+        </view>
+      </button>
+    </view>
+   
+  </view>
+</view>

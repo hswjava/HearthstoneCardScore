@@ -24,7 +24,8 @@ Page({
     'hero': '',
     'showTitle': '',
     'scrollItems':'',
-    'cardifScroll':'0'
+    'cardifScroll':'0',
+    'selectEdition':''
   },
 
   catchImg: function (e) {
@@ -155,17 +156,22 @@ Page({
   },
 
   setCloudData: function (e) {
-    let { hero, items } = this.data;
+    let { hero, items,selectEdition } = this.data;
     // console.log(hero,items)
+    console.log(items)
+    let upDateData={[hero]:items}
+    console.log(upDateData,selectEdition)
     db.collection('userScore').where({
       openId: app.globalData.openId,
+
     }).update({
       data: {
-        [hero]: items
+        [selectEdition]: upDateData
+        // [selectEdition[hero]]: items
       },
       success: function (res) {
         wx.showToast({
-          title: hero + '提交成功',
+          title: cloudImage.heroText(hero) + '提交成功',
           icon: 'none',
           duration: 2000
         })
@@ -176,7 +182,8 @@ Page({
           })
         }, 1500)
 
-      }
+      },
+      fail:console.error
     })
   },
   /**
@@ -197,6 +204,9 @@ Page({
       that.setData({ star: res.tempFilePath });
       // that.data.star=res.tempFilePath
     }
+    console.log(options.chooseEdition)
+    let selectEdition=options.chooseEdition
+    that.setData({selectEdition:options.chooseEdition})
     that.setData({ hero: options.hero })
     that.setData({ showTitle: cloudImage.heroText(options.hero) })
     //要先增加个判断，先看score表里有没有该用户数据
@@ -204,21 +214,27 @@ Page({
       openId: app.globalData.openId,
     }).get({
       success: res => {
-        // console.log(options.hero, res.data[0], typeof res.data[0][options.hero])
-        if (typeof res.data[0][options.hero] !== 'undefined') {
-          that.setData({ items: res.data[0][options.hero] })
+        console.log(options.hero, res.data[0], typeof res.data[0][selectEdition][options.hero])
+        if (typeof res.data[0][selectEdition][options.hero] !== 'undefined') {
+          that.setData({ items: res.data[0][selectEdition][options.hero] })
+          // that.setData({ items: res.data[0][selectEdition][options.hero] })
+          console.log( res.data[0][selectEdition][options.hero] )
         }
         else {
+          
           db.collection("cardlist").get({
             success: res2 => {
               // let index = options.selectIndex;
               let hero = options.hero;
               let cardList = []
-              let cardDir = res2.data[0][hero];
+              // let cardDir = res2.data[0][hero];
+              let cardDir = res2.data[0][selectEdition][hero];
               for (let i = 0; i < cardDir.length; i++) {
                 cardList.push({})
                 wx.cloud.downloadFile({
-                  fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i]['name'] + '.png',
+                  // fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i]['name'] + '.png',
+                  fileID: cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i]['name'] + '.png',
+
                   success: res3 => {
                     cardList[i].id = i;
                     cardList[i].name = cardDir[i]['name'];
@@ -231,7 +247,9 @@ Page({
                       // for(let j=0;j<cardDir[i].childCard.length;j++)
                       for(let j=cardDir[i].childCard.length-1;j>=0;j--){
                         wx.cloud.downloadFile({
-                          fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i].childCard[j] + '.png',
+                          // fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i].childCard[j] + '.png',
+                          fileID: cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i]['name'] + '.png',
+
                           success:res4=>{
                             // cardList[i].childItem[j]={'imageUrl':res4.tempFilePath} 
                             // cardList[i].childItem=[{}]
@@ -245,6 +263,7 @@ Page({
                         })
                       }
                     }
+                    console.log(cardList)
                     that.setData({ items: cardList })
                   },
                   fail: console.error

@@ -10,6 +10,7 @@ Page({
    */ 
   data: {
     heroClass: [],
+    chooseedition:""
   },
 
   /**
@@ -82,6 +83,8 @@ Page({
 
     onLoad: function (options) {
       if (app.globalData.firstLogin) {
+        this.setData({chooseedition:options.selectedition})
+
         wx.showModal({
           title: '评分提示',
           content: '1.本次评分采用5分制，最低1分，最高5分（因技术原因，本次评分不支持小数）\r\n2.短按图片放大，长按卡图则评论。若该卡有衍生卡，左右滑动评论里的卡片查看衍生卡。\r\n3.因数据流量原因，评分以职业区分，评完该职业卡后请在该页面确认提交。',
@@ -89,7 +92,7 @@ Page({
         })
       }
       else {
-
+        this.setData({chooseedition:options.selectedition})
       }
       db.collection("demohero").get({
         success: res => {
@@ -103,9 +106,10 @@ Page({
     typeClick: function (e) {
       let chooseIndex = e.currentTarget.dataset.index
       let chooseHero = e.currentTarget.dataset.hero
+      let {chooseedition} = this.data
       console.log(e.currentTarget.dataset.index, e)
       wx.navigateTo({
-        url: '../cardJudge/cardJudge?selectIndex=' + chooseIndex + '&hero=' + chooseHero,
+        url: '../cardJudge/cardJudge?selectIndex=' + chooseIndex + '&hero=' + chooseHero+'&chooseEdition='+chooseedition,
       })
     },
     /**

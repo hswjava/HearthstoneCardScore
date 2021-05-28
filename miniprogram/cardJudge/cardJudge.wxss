@@ -192,3 +192,7 @@
 .scollPart{
   display: flex;
 }
+
+.testbtn{
+  margin:30rpx 0 40rpx 0;
+}

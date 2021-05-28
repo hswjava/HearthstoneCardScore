@@ -61,7 +61,7 @@ Page({
               if (res.data.length > 0) {
                 app.globalData.userExist=true;
                 wx.navigateTo({
-                  url: '../../heroChoose/heroChoose',
+                  url: '../../editonChoose/editonChoose',
                 })
               }
               else {
@@ -75,7 +75,7 @@ Page({
                   }
                 })
                 wx.navigateTo({
-                  url: '../../heroChoose/heroChoose',
+                  url: '../../editonChoose/editonChoose',
                   // url: '../cooperation/cooperation?text=' + this.data.chooseData+'$' ,
                 })
               }
