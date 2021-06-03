@@ -27,12 +27,13 @@ Page({
   },
 
   finishUpload: function (e) {
+    let {chooseedition} = this.data
     db.collection('userScore').where({
       openId: app.globalData.openId,
     }).get({
       success: res => {
         let defaultList = ['demonhunter', 'druid', 'hunter', 'mage', 'paladin', 'priest', 'rogue', 'shaman', 'warlock', 'warrior', 'neutral']
-        for (var key in res.data[0]) {
+        for (var key in res.data[0][chooseedition]) {
           for (let j = 0; j < defaultList.length; j++) {
             if (key === defaultList[j]) {
               defaultList.splice(j, 1);
@@ -55,6 +56,7 @@ Page({
         }
         else {
           let newList = []
+       
           defaultList.forEach(function (element) {
             newList.push(cloudImage.heroText(element))
           });
@@ -67,7 +69,8 @@ Page({
             success(res) {
               if (res.confirm) {
                 wx.navigateTo({
-                  url: '../cardJudge/cardJudge?hero=' + jumpHero,
+                  // url: '../cardJudge/cardJudge?hero=' + jumpHero,
+                  url: '../cardJudge/cardJudge?hero=' + jumpHero+'&chooseEdition='+chooseedition,
                 })
               } else if (res.cancel) {
                 console.log('用户点击取消')
