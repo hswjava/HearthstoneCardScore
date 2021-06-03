@@ -16,7 +16,7 @@ Page({
     wx.getUserProfile({
       desc:'正在获取',//不写不弹提示框
       success:function(res){
-        console.log('获取成功: ',res)
+        // console.log('获取成功: ',res)
         app.globalData.userInfo = res.userInfo
         app.globalData.firstLogin= true
         that.setData({hasUserInfo:true})
@@ -45,7 +45,7 @@ Page({
     wx.cloud.callFunction({
       name: 'login',
       success: res => {
-        console.log('云函数获取到的openid:', res.result.openid)
+        // console.log('云函数获取到的openid:', res.result.openid)
         var openid = res.result.openid;
         // that.setData({
         //   openid: openid
@@ -71,7 +71,7 @@ Page({
                     nickName:app.globalData.userInfo.nickName,
                   },
                   success: function (res) {
-                    console.log(res)
+                    // console.log(res)
                   }
                 })
                 wx.navigateTo({
@@ -92,26 +92,13 @@ Page({
     })
   },
 
-  testCloud: function (e) {
-    console.log(e);
-    console.log('测试')
-    let test = 'logo';
-    wx.cloud.downloadFile({
-      // fileID: 'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/testCard/logo.png', // 文件 ID
-      fileID: 'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/testCard/' + test + '.png',
-      success: res => {
-        // 返回临时文件路径
-        console.log(res)
-      },
-      fail: console.error
-    })
-  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.cloud.downloadFile({
-      fileID: 'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/testCard/logo.png',
+      fileID: 'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/Barrens/logo.png',
       success: res => {
         // 返回临时文件路径
         this.setData({ titleSrc: res.tempFilePath })

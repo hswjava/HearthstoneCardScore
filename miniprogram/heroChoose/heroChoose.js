@@ -96,7 +96,7 @@ Page({
       }
       db.collection("demohero").get({
         success: res => {
-          console.log(res)
+          // console.log(res)
           this.setData({ heroClass: res.data })
         },
         fail: console.error
@@ -107,7 +107,6 @@ Page({
       let chooseIndex = e.currentTarget.dataset.index
       let chooseHero = e.currentTarget.dataset.hero
       let {chooseedition} = this.data
-      console.log(e.currentTarget.dataset.index, e)
       wx.navigateTo({
         url: '../cardJudge/cardJudge?selectIndex=' + chooseIndex + '&hero=' + chooseHero+'&chooseEdition='+chooseedition,
       })

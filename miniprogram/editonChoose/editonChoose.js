@@ -7,12 +7,11 @@ Page({
   data: {
     // editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'}],
    
-    editionClass:[{id:'Barrens',name:'贫瘠之地'}],
+    editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'}],
 
   },
 
   typeClick:function(e){
-    console.log(e.currentTarget.dataset.selectid)
     let {chooseHero} = this.data
     let selectedition=e.currentTarget.dataset.selectid
     wx.navigateTo({

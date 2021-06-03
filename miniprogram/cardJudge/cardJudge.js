@@ -49,7 +49,7 @@ Page({
       items[selectIndex]['stars'] = Number(changeNum) + starNum
 
     }
-    console.log(items[selectIndex]['stars'])
+    // console.log(items[selectIndex]['stars'])
     that.setData({ items, changeNum: 0, changeAct: '' })
   },
 
@@ -158,9 +158,8 @@ Page({
   setCloudData: function (e) {
     let { hero, items,selectEdition } = this.data;
     // console.log(hero,items)
-    console.log(items)
     let upDateData={[hero]:items}
-    console.log(upDateData,selectEdition)
+    // console.log(upDateData,selectEdition)
     db.collection('userScore').where({
       openId: app.globalData.openId,
 
@@ -204,7 +203,7 @@ Page({
       that.setData({ star: res.tempFilePath });
       // that.data.star=res.tempFilePath
     }
-    console.log(options.chooseEdition)
+    // console.log(options.chooseEdition)
     let selectEdition=options.chooseEdition
     that.setData({selectEdition:options.chooseEdition})
     that.setData({ hero: options.hero })
@@ -214,11 +213,10 @@ Page({
       openId: app.globalData.openId,
     }).get({
       success: res => {
-        console.log(options.hero, res.data[0], typeof res.data[0][selectEdition][options.hero])
-        if (typeof res.data[0][selectEdition][options.hero] !== 'undefined') {
+        // console.log(options.hero, res.data[0], res.data[0][selectEdition])
+        if (typeof res.data[0][selectEdition]!=='undefined' && typeof res.data[0][selectEdition][options.hero] !== 'undefined') {
           that.setData({ items: res.data[0][selectEdition][options.hero] })
           // that.setData({ items: res.data[0][selectEdition][options.hero] })
-          console.log( res.data[0][selectEdition][options.hero] )
         }
         else {
           
@@ -234,7 +232,7 @@ Page({
                 wx.cloud.downloadFile({
                   // fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i]['name'] + '.png',
                   fileID: cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i]['name'] + '.png',
-
+               
                   success: res3 => {
                     cardList[i].id = i;
                     cardList[i].name = cardDir[i]['name'];
@@ -248,8 +246,7 @@ Page({
                       for(let j=cardDir[i].childCard.length-1;j>=0;j--){
                         wx.cloud.downloadFile({
                           // fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i].childCard[j] + '.png',
-                          fileID: cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i]['name'] + '.png',
-
+                          fileID: cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i].childCard[j] + '.png',
                           success:res4=>{
                             // cardList[i].childItem[j]={'imageUrl':res4.tempFilePath} 
                             // cardList[i].childItem=[{}]
@@ -263,7 +260,7 @@ Page({
                         })
                       }
                     }
-                    console.log(cardList)
+                    // console.log(cardList)
                     that.setData({ items: cardList })
                   },
                   fail: console.error
