@@ -3,7 +3,7 @@
     "pages/index/index",
     "heroChoose/heroChoose",
     "cardJudge/cardJudge",
-    "editionChoose/editonChoose"
+    "editonChoose/editonChoose"
     
   ],
   "window": {

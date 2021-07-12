@@ -1,4 +1,4 @@
-// miniprogram/editionChoose/editionChoose.js
+// miniprogram/editonChoose/editonChoose.js
 Page({
 
   /**
@@ -14,6 +14,7 @@ Page({
   typeClick:function(e){
     let {chooseHero} = this.data
     let selectedition=e.currentTarget.dataset.selectid
+    console.log(chooseHero,selectedition)
     wx.navigateTo({
       url: '../heroChoose/heroChoose?selectedition=' + selectedition ,
     })

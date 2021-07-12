@@ -51,7 +51,7 @@ Page({
         //   openid: openid
         // })
         app.globalData.openId = openid
-
+        console.log(openid)
         db.collection('userScore').where({
           openId: app.globalData.openId,
         }).get(
@@ -98,7 +98,7 @@ Page({
    */
   onLoad: function (options) {
     wx.cloud.downloadFile({
-      fileID: 'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/Barrens/logo.png',
+      fileID: 'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/Barrens/logo.png',
       success: res => {
         // 返回临时文件路径
         this.setData({ titleSrc: res.tempFilePath })
@@ -106,7 +106,8 @@ Page({
       fail: console.error
     })
     wx.cloud.downloadFile({
-      fileID: 'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/background.jpg',
+      fileID: 'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/backgroud.jpg',
+      
       success: res => {
         // 返回临时文件路径
         this.setData({ backImg: res.tempFilePath })

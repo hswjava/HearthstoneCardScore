@@ -9,13 +9,13 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        env: 'heartstone-score-7fotud45b9264af',
+        env: 'hsw-8g74af8d6fd4dabd',
         traceUser: true,
       })
     }
 
     this.globalData = {
-      cloudUrl:'cloud://heartstone-score-7fotud45b9264af.6865-heartstone-score-7fotud45b9264af-1305170786/',
+      cloudUrl:'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/',
       openId:'',
       userExist:false,
       userInfo:null,

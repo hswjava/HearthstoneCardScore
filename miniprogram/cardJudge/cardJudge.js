@@ -229,11 +229,13 @@ Page({
               let cardDir = res2.data[0][selectEdition][hero];
               for (let i = 0; i < cardDir.length; i++) {
                 cardList.push({})
+                // console.log( cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i]['name'] + '.png')
                 wx.cloud.downloadFile({
                   // fileID: cloudUrl + 'testCard/' + hero + '/' + cardDir[i]['name'] + '.png',
                   fileID: cloudUrl + selectEdition+'/' + hero + '/' + cardDir[i]['name'] + '.png',
                
                   success: res3 => {
+                    
                     cardList[i].id = i;
                     cardList[i].name = cardDir[i]['name'];
                     cardList[i].imageUrl = res3.tempFilePath;

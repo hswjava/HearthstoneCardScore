@@ -85,6 +85,7 @@ Page({
 
 
     onLoad: function (options) {
+      console.log(options)
       if (app.globalData.firstLogin) {
         this.setData({chooseedition:options.selectedition})
 
@@ -99,8 +100,9 @@ Page({
       }
       db.collection("demohero").get({
         success: res => {
-          // console.log(res)
+          console.log(res)
           this.setData({ heroClass: res.data })
+          console.log(res.data)
         },
         fail: console.error
       })
