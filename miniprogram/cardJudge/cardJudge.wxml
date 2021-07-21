@@ -66,4 +66,4 @@
 <!-- <view class='hello'>
     何sensei倾情奉献
   </view> -->
-  <button type='warn' wx:if="{{!markModal}}" bindtap='setCloudData' class="testbtn">提交</button>
+  <button type='warn' wx:if="{{!markModal}}" bindtap='setCloudData' class="testbtn">保存</button>

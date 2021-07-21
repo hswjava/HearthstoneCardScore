@@ -19,7 +19,11 @@ App({
       openId:'',
       userExist:false,
       userInfo:null,
-      firstLogin:false
+      firstLogin:false,
+      Barrens:{
+     
+      },
+      BarrensMini:{}
     }
   }
 })

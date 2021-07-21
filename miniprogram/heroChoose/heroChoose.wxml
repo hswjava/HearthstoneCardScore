@@ -11,9 +11,17 @@
     </view>
     <view class="confirmText">
       <!-- <button style='background-color:yellow' class="showContent"> -->
+        <button bindtap='historyGet' class="showContent">
+        <view class='showText'>
+          <text>获取历史</text>
+        </view>
+      </button>
+    </view>
+    <view class="confirmText">
+      <!-- <button style='background-color:yellow' class="showContent"> -->
         <button bindtap='finishUpload' class="showContent">
         <view class='showText'>
-          <text>评分完成</text>
+          <text>评分上传</text>
         </view>
       </button>
     </view>

@@ -13,24 +13,30 @@ Page({
   },
   GetUserInfo:function(e) {
     let that=this
-    wx.getUserProfile({
-      desc:'正在获取',//不写不弹提示框
-      success:function(res){
-        // console.log('获取成功: ',res)
-        app.globalData.userInfo = res.userInfo
-        app.globalData.firstLogin= true
-        that.setData({hasUserInfo:true})
-        that.JumpClick()
-      },
-      fail:function(err){
-        that.setData({hasUserInfo:false})
-        wx.showToast({
-          title: '获得你的授权后才能开始评分',
-          icon: 'none',
-          duration: 2000
-        })
-      }
+    wx.navigateTo({
+      url: '../../editonChoose/editonChoose',
+      // url: '../cooperation/cooperation?text=' + this.data.chooseData+'$' ,
     })
+    app.globalData.firstLogin=true
+    // that.JumpClick()
+    // wx.getUserProfile({
+    //   desc:'正在获取',//不写不弹提示框
+    //   success:function(res){
+    //     // console.log('获取成功: ',res)
+    //     app.globalData.userInfo = res.userInfo
+    //     app.globalData.firstLogin= true
+    //     that.setData({hasUserInfo:true})
+    //     that.JumpClick()
+    //   },
+    //   fail:function(err){
+    //     that.setData({hasUserInfo:false})
+    //     wx.showToast({
+    //       title: '获得你的授权后才能开始评分',
+    //       icon: 'none',
+    //       duration: 2000
+    //     })
+    //   }
+    // })
   },
   JumpClick: function (e) {
     this.getOpenid()
