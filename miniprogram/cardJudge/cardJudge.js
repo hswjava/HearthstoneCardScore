@@ -202,7 +202,7 @@ Page({
   // },
 
 
-  uploadData(selectEdition, data,hero) {
+  uploadData(selectEdition, data, hero) {
     db.collection('userScore').where({
       openId: app.globalData.openId,
     }).update({
@@ -237,18 +237,51 @@ Page({
     console.log(app.globalData[selectEdition][hero])
     // app.globalData['selectEdition'][hero]=items
     app.globalData[selectEdition][hero] = items
+    console.log(app.globalData['Barrens'])
     if (!app.globalData.openId) {
       wx.getUserProfile({
         desc: '正在获取',//不写不弹提示框
         success: function (res) {
-         
+
           app.globalData.userInfo = res.userInfo
           wx.cloud.callFunction({
             name: 'login',
             success: res2 => {
               var openid = res2.result.openid;
               app.globalData.openId = openid
-             
+
+              db.collection('userScore').add({
+                data: {
+                  openId:  app.globalData.openId,
+                  nickName: app.globalData.userInfo.nickName,
+                },
+                success: function (res) {
+                  db.collection('userScore').where({
+                    openId: app.globalData.openId,
+                  }).update({
+                    data: {
+                      [selectEdition]: upDateData
+                      // [selectEdition[hero]]: items
+                    },
+                    success: function (res) {
+                      console.log(res)
+                      wx.showToast({
+                        title: cloudImage.heroText(hero) + '提交成功',
+                        icon: 'none',
+                        duration: 2000
+                      })
+            
+                      setTimeout(function () {
+                        wx.navigateBack({
+                          delta: 1,
+                        })
+                      }, 1500)
+            
+                    },
+                    fail: console.error
+                  })
+                }
+              })
             },
             fail: res => {
               console.log('登录失败', res)
@@ -270,7 +303,9 @@ Page({
       })
     }
     else {
-      
+     
+
+
       db.collection('userScore').where({
         openId: app.globalData.openId,
       }).update({
@@ -279,6 +314,7 @@ Page({
           // [selectEdition[hero]]: items
         },
         success: function (res) {
+          console.log(res)
           wx.showToast({
             title: cloudImage.heroText(hero) + '提交成功',
             icon: 'none',
@@ -344,7 +380,7 @@ Page({
                   wx.cloud.downloadFile({
                     fileID: cloudUrl + selectEdition + '/' + hero + '/' + cardDir[i]['name'] + '.png',
                     success: res3 => {
-                   
+
                       cardList[i].id = i;
                       cardList[i].name = cardDir[i]['name'];
                       cardList[i].imageUrl = res3.tempFilePath;
@@ -381,22 +417,23 @@ Page({
       })
     }
     else if (app.globalData[selectEdition][options.hero]) {
-      
+
       that.setData({ items: app.globalData[selectEdition][options.hero] })
     }
     else {
       db.collection("cardlist").get({
         success: res2 => {
+          console.log('1')
           let hero = options.hero;
           let cardList = []
           let cardDir = res2.data[0][selectEdition][hero];
           for (let i = 0; i < cardDir.length; i++) {
             cardList.push({})
-        
+
             wx.cloud.downloadFile({
               fileID: cloudUrl + selectEdition + '/' + hero + '/' + cardDir[i]['name'] + '.png',
               success: res3 => {
-                
+
                 cardList[i].id = i;
                 cardList[i].name = cardDir[i]['name'];
                 cardList[i].imageUrl = res3.tempFilePath;
@@ -417,6 +454,7 @@ Page({
                 }
                 // console.log(cardList)
                 that.setData({ items: cardList })
+                app.globalData[selectEdition][hero] = cardList
               },
               fail: console.error
             })

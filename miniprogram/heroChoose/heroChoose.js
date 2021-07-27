@@ -148,7 +148,7 @@ Page({
 
   historyGet:function(e){
     console.log(app.globalData.openId)
-    if(app.globalData.openId===''){
+    if(app.globalData.openId.length===0){
       wx.getUserProfile({
         desc:'正在获取',//不写不弹提示框
         success:function(res){
