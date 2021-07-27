@@ -237,7 +237,6 @@ Page({
     console.log(app.globalData[selectEdition][hero])
     // app.globalData['selectEdition'][hero]=items
     app.globalData[selectEdition][hero] = items
-    console.log(app.globalData['Barrens'])
     if (!app.globalData.openId) {
       wx.getUserProfile({
         desc: '正在获取',//不写不弹提示框

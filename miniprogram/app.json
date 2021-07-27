@@ -10,7 +10,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "炉石评分",
+    "navigationBarTitleText": "炉卡评分",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

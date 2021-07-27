@@ -33,7 +33,6 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "useStaticServer": false,
     "showES6CompileOption": false
   },
   "appid": "wx9747289bed5cfc3f",
