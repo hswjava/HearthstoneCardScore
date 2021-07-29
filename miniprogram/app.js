@@ -20,8 +20,8 @@ App({
       userExist:false,
       userInfo:null,
       firstLogin:false,
-      Barrens:{},
-      BarrensMini:{},
+      // Barrens:{},
+      // BarrensMini:{},
       stormwind:{}
     }
   }
