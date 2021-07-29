@@ -379,7 +379,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     let that = this
     let cloudUrl = app.globalData.cloudUrl
     let url = cloudUrl + 'stars/star_choosed.png'
@@ -429,7 +429,6 @@ Page({
                       cardList[i].comment = '';
                       cardList[i].childItem = []
                       cardList[i].childItem.push({ 'imageUrl': res3.tempFilePath })
-                      console.log('394')
                       if (typeof cardDir[i].childCard === 'object') {
                         for (let j = 0; j <= cardDir[i].childCard.length - 1; j++) {
                           let img_url = cloudUrl + selectEdition + '/' + hero + '/' + cardDir[i].childCard[j] + '.png'
@@ -461,17 +460,17 @@ Page({
       })
     }//if 判断
     else if (app.globalData[selectEdition][options.hero]) {
-      console.log('426')
+      // console.log('426')
       that.setData({ items: app.globalData[selectEdition][options.hero] })
     }
     else {
-      console.log('430')
+      // console.log('430')
       db.collection("cardlist").get({
         success: res2 => {
           let hero = options.hero;
           let cardList = []
           let cardDir = res2.data[0][selectEdition][hero];
-          console.log(cardDir)
+          // console.log(cardDir)
           for (let i = 0; i < cardDir.length; i++) {
             cardList.push({})
 
@@ -491,6 +490,9 @@ Page({
                     cardList[i].childItem.push({ 'imageUrl':  img_url})
                     wx.cloud.downloadFile({
                       fileID: img_url,
+                      // success: res7=>{
+                      //   cardList[i].childItem.push({ 'imageUrl':  res7.tempFilePath})
+                      // },
                       fail: res4=>{
                         cardList[i].childItem.remove({ 'imageUrl': res4.tempFilePath })
                         console.error
