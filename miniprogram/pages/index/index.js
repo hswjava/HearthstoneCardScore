@@ -112,7 +112,7 @@ Page({
       fail: console.error
     })
     wx.cloud.downloadFile({
-      fileID: 'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/backgroud.jpg',
+      fileID: 'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/background.jpg',
       
       success: res => {
         // 返回临时文件路径

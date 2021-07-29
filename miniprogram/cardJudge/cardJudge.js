@@ -249,39 +249,78 @@ Page({
             success: res2 => {
               var openid = res2.result.openid;
               app.globalData.openId = openid
+              db.collection('userScore').where({
+                openId: app.globalData.openId,
+              }).get({
+                success: function (res2) {
+                  // res.data 包含该记录的数据
+                  console.log(res2.data[0]['openId'])
+                  if (
+                    !res2.data[0]['openId']
+                  ) {
+                    db.collection('userScore').add({
+                      data: {
+                        openId: app.globalData.openId,
+                        nickName: app.globalData.userInfo.nickName,
+                      },
+                      success: function (res) {
+                        db.collection('userScore').where({
+                          openId: app.globalData.openId,
+                        }).update({
+                          data: {
+                            [selectEdition]: upDateData
+                            // [selectEdition[hero]]: items
+                          },
+                          success: function (res) {
+                            console.log(res)
+                            wx.showToast({
+                              title: cloudImage.heroText(hero) + '提交成功',
+                              icon: 'none',
+                              duration: 2000
+                            })
 
-              db.collection('userScore').add({
-                data: {
-                  openId:  app.globalData.openId,
-                  nickName: app.globalData.userInfo.nickName,
-                },
-                success: function (res) {
-                  db.collection('userScore').where({
-                    openId: app.globalData.openId,
-                  }).update({
-                    data: {
-                      [selectEdition]: upDateData
-                      // [selectEdition[hero]]: items
-                    },
-                    success: function (res) {
-                      console.log(res)
-                      wx.showToast({
-                        title: cloudImage.heroText(hero) + '提交成功',
-                        icon: 'none',
-                        duration: 2000
-                      })
-            
-                      setTimeout(function () {
-                        wx.navigateBack({
-                          delta: 1,
+                            setTimeout(function () {
+                              wx.navigateBack({
+                                delta: 1,
+                              })
+                            }, 1500)
+
+                          },
+                          fail: console.error
                         })
-                      }, 1500)
-            
-                    },
-                    fail: console.error
-                  })
-                }
+                      }
+                    })
+                  }
+                  else {
+                    db.collection('userScore').where({
+                      openId: app.globalData.openId,
+                    }).update({
+                      data: {
+                        [selectEdition]: upDateData
+                        // [selectEdition[hero]]: items
+                      },
+                      success: function (res) {
+                        console.log(res)
+                        wx.showToast({
+                          title: cloudImage.heroText(hero) + '提交成功',
+                          icon: 'none',
+                          duration: 2000
+                        })
+
+                        setTimeout(function () {
+                          wx.navigateBack({
+                            delta: 1,
+                          })
+                        }, 1500)
+
+                      },
+                      fail: console.error
+                    })
+                  }
+                },
+                fail: console.error
               })
+
             },
             fail: res => {
               console.log('登录失败', res)
@@ -303,7 +342,7 @@ Page({
       })
     }
     else {
-     
+
 
 
       db.collection('userScore').where({
