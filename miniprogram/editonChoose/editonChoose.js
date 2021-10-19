@@ -7,7 +7,7 @@ Page({
   data: {
     // editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'}],
    
-    editionClass:[{id:'stormwind',name:'暴风城下的集结'}],
+    editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'},{id:'stormwind',name:'暴风城下的集结'}],
 
   },
 

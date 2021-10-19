@@ -63,6 +63,17 @@ Page({
     })
   },
 
+  childCardShortTap: function (e) {
+    let { scrollItems, markIndex } = this.data
+    console.log(this.data)
+    var i = e.currentTarget.offsetLeft/320
+  console.log(i)
+  wx.previewImage({
+    urls: [scrollItems[0].childItem[i]['imageUrl']],
+  })
+
+  },
+
   cardlongTap: function (e) {
     let that = this;
     // console.log(that.data)
