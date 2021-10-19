@@ -65,9 +65,9 @@ Page({
 
   childCardShortTap: function (e) {
     let { scrollItems, markIndex } = this.data
-    console.log(this.data)
+    // console.log(this.data)
     var i = e.currentTarget.offsetLeft/320
-  console.log(i)
+  // console.log(i)
   wx.previewImage({
     urls: [scrollItems[0].childItem[i]['imageUrl']],
   })
