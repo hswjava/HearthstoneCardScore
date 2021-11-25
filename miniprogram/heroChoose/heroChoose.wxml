@@ -26,4 +26,12 @@
       </button>
     </view>
   </view>
+  <!-- <view class="confirmText">
+        <button bindtap='historyGet' class="showContent">
+        <view class='showText'>
+          <text>查看个人报告</text>
+        </view>
+      </button>
+    </view> -->
+
 </view>

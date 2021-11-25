@@ -104,7 +104,7 @@ Page({
    */
   onLoad: function (options) {
     wx.cloud.downloadFile({
-      fileID: 'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/stormwind/logo.png',
+      fileID: 'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/Alterac/logo_fractured-in-av_enus.png',
       success: res => {
         // 返回临时文件路径
         this.setData({ titleSrc: res.tempFilePath })

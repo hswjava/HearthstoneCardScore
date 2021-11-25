@@ -7,7 +7,7 @@ Page({
   data: {
     // editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'}],
    
-    editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'},{id:'stormwind',name:'暴风城下的集结'}],
+    editionClass:[{id:'Barrens',name:'贫瘠之地'},{id:'BarrensMini',name:'贫瘠之地迷你'},{id:'stormwind',name:'暴风城下的集结'},{id:'stormwindMini',name:'暴风城下的集结迷你'},{id:'Alterac',name:'奥特兰克的决裂'}],
 
   },
 

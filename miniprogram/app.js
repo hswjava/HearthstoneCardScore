@@ -22,7 +22,9 @@ App({
       firstLogin:false,
       Barrens:{},
       BarrensMini:{},
-      stormwind:{}
+      stormwind:{},
+      stormwindMini:{},
+      Alterac:{}
     }
   }
 })
