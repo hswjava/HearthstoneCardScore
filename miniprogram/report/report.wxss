@@ -1,0 +1,33 @@
+/* report/report.wxss */
+.pages {
+  padding: 32rpx;
+}
+.title{
+  text-align: center;
+  margin: 1em 0rpx;
+}
+.content{
+  height: 660rpx;
+  text-align: center;
+}
+.empty{
+  text-align: center;
+  height: 680rpx;
+  line-height: 680rpx;
+  font-size: 64rpx;
+}
+.cardImg{
+  width: 370rpx;
+  height: 518rpx;
+}
+.cardName{
+  display: block;
+  background-color: #000;
+  color: #fff;
+  left: 0;
+  width: 94%;
+  text-align: center;
+  font-size: 25rpx;
+  padding: 10rpx;
+  opacity: 0.5;
+}

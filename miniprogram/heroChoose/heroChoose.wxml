@@ -25,6 +25,14 @@
         </view>
       </button>
     </view>
+    <view class="confirmText">
+      <!-- <button style='background-color:yellow' class="showContent"> -->
+        <button bindtap='viewReport' class="showContent">
+        <view class='showText'>
+          <text>查看报告</text>
+        </view>
+      </button>
+    </view>
   </view>
   <!-- <view class="confirmText">
         <button bindtap='historyGet' class="showContent">

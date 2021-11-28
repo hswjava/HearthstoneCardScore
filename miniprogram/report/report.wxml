@@ -1,0 +1,36 @@
+<!-- report/report.wxml -->
+<view class="pages">
+    <block class="block">
+        <view class="title">满分卡(滑动查看更多)</view>
+        <swiper class="content" wx:if="fiveList.length">
+            <swiper-item wx:for="{{fiveList}}" wx:key="index" class="content__item">
+                <image src="{{item.src}}" class="cardImg"></image>
+                <text class="cardName">{{item.name}}</text>
+            </swiper-item>
+        </swiper>
+        <view class="empty" wx:else>暂无数据</view>
+    </block>
+    <block>
+        <view class="title">1分卡(滑动查看更多)</view>
+        <swiper class="content" wx:if="oneList.length">
+            <swiper-item wx:for="{{oneList}}" wx:key="index" class="content__item">
+                <image src="{{item.src}}" class="cardImg"></image>
+                <text class="cardName">{{item.name}}</text>
+            </swiper-item>
+        </swiper>
+        <view class="empty" wx:else>暂无数据</view>
+    </block>
+    <block>
+        <view class="title" >单卡点评</view>
+        <view wx:if="commentList.length">
+         <view wx:for="{{commentList}}" wx:key="index" class="content__item">
+            <text>{{item.name}}：{{item.comment}}</text>
+        </view>
+        </view>
+        <view class="empty" wx:else>暂无数据</view>
+    </block>
+    <block>
+        <view class="title">各职业平均分</view>
+        <view wx:for="{{avergeList}}" wx:key="index">{{item.name}}：{{item.averge}}</view>
+    </block>
+</view>

@@ -1,18 +1,18 @@
 {
-  "pages": [
-    "pages/index/index",
-    "heroChoose/heroChoose",
-    "cardJudge/cardJudge",
-    "editonChoose/editonChoose"
-    
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "炉卡评分",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+    "pages": [
+        "pages/index/index",
+        "heroChoose/heroChoose",
+        "cardJudge/cardJudge",
+        "editonChoose/editonChoose",
+        "report/report"
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "炉卡评分",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "style": "v2"
 }

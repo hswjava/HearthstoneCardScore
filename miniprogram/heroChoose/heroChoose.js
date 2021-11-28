@@ -91,7 +91,31 @@ Page({
     }
    
   },
+  viewReport(){
+    let {chooseedition} = this.data
+    if(app.globalData.openId.length===0){
+      wx.getUserProfile({desc:"正在获取",success:res=>{
+             app.globalData.userInfo = res.userInfo
+     wx.cloud.callFunction({name:'login'}).then( res => {
+      let openid = res.result.openid;
 
+      app.globalData.openId = openid
+      wx.navigateTo({
+        url: `../report/report?chooseEdition=${chooseedition}`,
+      })
+  }).catch(err => {
+      console.log('登录失败', err)
+    })   
+      },fail:err=>console.error(err)})
+
+    }
+    else{
+      wx.navigateTo({
+        url: `../report/report?chooseEdition=${chooseedition}`,
+      })
+    }
+   
+  },
   getOpenid(e) {
     let that = this;
     wx.cloud.callFunction({
