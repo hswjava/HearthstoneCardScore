@@ -1,10 +1,10 @@
 {
     "pages": [
         "pages/index/index",
-        "heroChoose/heroChoose",
-        "cardJudge/cardJudge",
-        "editonChoose/editonChoose",
-        "report/report"
+        "pages/heroChoose/heroChoose",
+        "pages/cardJudge/cardJudge",
+        "pages/editonChoose/editonChoose",
+        "pages/report/report"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",
@@ -13,6 +13,5 @@
         "navigationBarTitleText": "炉卡评分",
         "navigationBarTextStyle": "black"
     },
-    "sitemapLocation": "sitemap.json",
-    "style": "v2"
+    "sitemapLocation": "sitemap.json"
 }

@@ -1,8 +1,8 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch() {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
       wx.cloud.init({
         // env 参数说明：
@@ -10,21 +10,36 @@ App({
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
         env: 'hsw-8g74af8d6fd4dabd',
-        traceUser: true,
-      })
+        traceUser: true
+      });
     }
 
     this.globalData = {
-      cloudUrl:'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/',
-      openId:'',
-      userExist:false,
-      userInfo:null,
-      firstLogin:false,
-      Barrens:{},
-      BarrensMini:{},
-      stormwind:{},
-      stormwindMini:{},
-      Alterac:{}
-    }
+      cloudUrl:
+        'cloud://hsw-8g74af8d6fd4dabd.6873-hsw-8g74af8d6fd4dabd-1306472987/',
+      openId: '',
+      userExist: false,
+      userInfo: null,
+      firstLogin: false,
+      Barrens: {},
+      BarrensMini: {},
+      stormwind: {},
+      stormwindMini: {},
+      Alterac: {},
+      // 职业
+      classList: [
+        'demonhunter',
+        'druid',
+        'hunter',
+        'mage',
+        'paladin',
+        'priest',
+        'rogue',
+        'shaman',
+        'warlock',
+        'warrior',
+        'neutral'
+      ]
+    };
   }
-})
+});
