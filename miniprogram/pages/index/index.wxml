@@ -3,7 +3,8 @@
     <image src='{{titleSrc}}'></image>
   </view> 
   <view class='startJudge'>
-    <button class="JumpBtn" type='primary' bindtap="JumpClick">开始评分</button>
+    <button wx:if="{{!hasUserInfo}}" type='primary' class="btn" catchtap="GetUserInfo">开始评分</button>
+    <button wx:else class="JumpBtn" type='primary' bindtap="JumpClick">开始评分</button>
   </view>
   <!-- <view class="historyJudge">
     <button class='historyBtn' type='primary' bindtap="historyClick">历史评分查看</button>

@@ -4,16 +4,42 @@
       <button class="showContent">
         <view class='showText'>
           <!-- <text style="color:{{item.textShow[0]['textcolor']}}">{{item.textShow[0]['text1']}}</text> -->
+          <!-- <text style="color:{{item.color}}">{{item.name}}</text> -->
           <text>{{item.name}}</text>
         </view>
       </button>
     </view>
     <view class="confirmText">
-      <button style='background-color:yellow' class="showContent">
+      <!-- <button style='background-color:yellow' class="showContent"> -->
+        <button bindtap='historyGet' class="showContent">
         <view class='showText'>
-          <text>确定提交</text>
+          <text>获取历史</text>
+        </view>
+      </button>
+    </view>
+    <view class="confirmText">
+      <!-- <button style='background-color:yellow' class="showContent"> -->
+        <button bindtap='finishUpload' class="showContent">
+        <view class='showText'>
+          <text>评分上传</text>
+        </view>
+      </button>
+    </view>
+    <view class="confirmText">
+      <!-- <button style='background-color:yellow' class="showContent"> -->
+        <button bindtap='viewReport' class="showContent">
+        <view class='showText'>
+          <text>查看报告</text>
         </view>
       </button>
     </view>
   </view>
+  <!-- <view class="confirmText">
+        <button bindtap='historyGet' class="showContent">
+        <view class='showText'>
+          <text>查看个人报告</text>
+        </view>
+      </button>
+    </view> -->
+
 </view>

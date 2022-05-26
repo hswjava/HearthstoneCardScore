@@ -1,24 +1,23 @@
+/* miniprogram/editionChoose/editionChoose.wxss */
 .wholePage{
   height: 100%;
   width: 100%;
   display:flex;
   justify-content: center;
   align-items: center;
+  padding-top: 150rpx;
 }
 
-.heroChoosePage{
+.editionChoosePage{
   align-items: center;
 }
 
-.heroText{
+.editionText{
   margin-top:40rpx;
   display:flex;
 }
 
-.confirmText{
-  margin:40rpx 0;
-  display:flex;
-}
+
 
 .showContent{
   display:flex;
